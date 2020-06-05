@@ -76,7 +76,7 @@ From your command line:
 $ git clone https://github.com/Vtspereira/NLW_Booster
 
 # Go into the repository
-$ cd NLW_Booster/backend
+$ cd NLW_Booster/server
 
 # Install dependencies
 $ yarn install
