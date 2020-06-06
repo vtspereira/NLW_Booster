@@ -90,7 +90,44 @@ $ yarn knex:seed
 # Start server
 $ yarn dev
 
-running on port 3333
+# running on port 3333
+```
+
+### Install Front-end
+
+```bash
+# Clone this repository
+$ git clone https://github.com/Vtspereira/NLW_Booster
+
+# Go into the repository
+$ cd NLW_Booster/web
+
+# Install dependencies
+$ yarn install
+
+# Run
+$ yarn start
+
+# running on port 3000
+```
+
+### Install Mobile
+
+```bash
+# Clone this repository
+$ git clone https://github.com/Vtspereira/NLW_Booster
+
+# Go into the repository
+$ cd NLW_Booster/mobile
+
+# Install dependencies
+$ yarn install
+
+# Run
+$ yarn start
+
+# Expo will open, just scan the qrcode on terminal or expo page
+
 ```
 
 ## :memo: License
