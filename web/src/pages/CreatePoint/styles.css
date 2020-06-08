@@ -201,3 +201,81 @@
     background: #E1FAEC;
     border: 2px solid #34CB79;
   }
+
+  #modal {
+    background-color: #0E0A14ef;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 400ms;
+}
+ 
+  #modal.hide {
+    display: none;
+}
+
+#modal .content {
+  position: absolute;
+  width: 324px;
+  height: 130px;
+  left: 558px;
+  top: 345px;
+}
+
+#modal .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    position: relative;
+}
+
+#modal .header .close {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    font-size: 0.01px;
+}
+
+#modal .header .check {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  left: 130px;
+  top: 0px;
+  color: #34CB79;
+}
+
+#modal .content h1 {
+  position: absolute;
+width: 324px;
+height: 42px;
+left: 0px;
+top: 88px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 36px;
+line-height: 42px;
+
+/* Background */
+
+color: #F0F0F5;
+
+}
+
+#modal  .closeModal{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 8px;
+  right: 25px;
+  font-size: 18px;
+  color: white;
+}

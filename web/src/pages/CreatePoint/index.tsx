@@ -1,6 +1,7 @@
-import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
+import React, { useEffect, useState, ChangeEvent, FormEvent, SyntheticEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom'
-import { FiArrowLeft } from 'react-icons/fi'
+import { default as NumberFormat } from 'react-number-format';
+import { FiArrowLeft, FiX, FiCheckCircle } from 'react-icons/fi'
 import { Map, TileLayer, Marker } from 'react-leaflet'
 import axios from 'axios'
 import api from '../../services/api'
@@ -48,6 +49,8 @@ const CreatePoint = () => {
     const [selectedItems, setSelectedItems] = useState<number[]>([])
 
     const history = useHistory()
+
+    const close = document.querySelector("#modal")
 
     useEffect(() => {
         api.get('items').then(response => {
@@ -140,14 +143,19 @@ const CreatePoint = () => {
         data.append('longitude', String(longitude))
         data.append('items', items.join(','))
 
-        if(selectedFile) {
+        if (selectedFile) {
             data.append('image', selectedFile)
         }
 
         await api.post('points', data)
 
-        alert('Ponto de coleta criado!')
+        const modal = document.querySelector("#modal")
 
+        modal?.classList.remove("hide")
+    }
+
+    function modalClose(){
+        close?.classList.add("hide")
         history.push('/')
     }
 
@@ -174,17 +182,17 @@ const CreatePoint = () => {
 
                     <div className="field">
                         <label htmlFor="name">Nome da entidade</label>
-                        <input type="text" name="name" id="name" onChange={handleInputChange} />
+                        <input type="text" name="name" id="name" placeholder="Informe o nome do seu estabelecimento" onChange={handleInputChange} />
                     </div>
 
                     <div className="field-group">
                         <div className="field">
                             <label htmlFor="name">E-mail</label>
-                            <input type="email" name="email" id="email" onChange={handleInputChange} />
+                            <input type="email" name="email" id="email" placeholder="Informe seu e-mail" onChange={handleInputChange} />
                         </div>
                         <div className="field">
                             <label htmlFor="name">Whatsapp</label>
-                            <input type="text" name="whatsapp" id="whatsapp" onChange={handleInputChange} placeholder="( ) " />
+                            <NumberFormat format="55##########" mask="_" name="whatsapp" id="whatsapp" placeholder="Informe o número com DDD" onChange={handleInputChange} />
                         </div>
                     </div>
 
@@ -254,6 +262,15 @@ const CreatePoint = () => {
 
             </form>
 
+            <div id="modal" onClick={modalClose} className="hide"> 
+                <div className="content">
+                    <div className="header">
+                        <FiCheckCircle className="check"></FiCheckCircle>
+                    </div>
+                        <h1>Cadastro concluído!</h1>
+                </div>
+                        <FiX className="closeModal" ></FiX>
+            </div>
         </div>
     )
 }
